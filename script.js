@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Эффект печати для заголовка (без отображения <br>)
+    // Эффект печати для заголовка
     const headTitle = document.querySelector('.head-h1');
     if(headTitle && !headTitle.hasAttribute('data-animated')) {
         const originalText = headTitle.innerText;
@@ -180,7 +180,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Добавляем стили для анимаций
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `
     /* Анимации для карточек */
