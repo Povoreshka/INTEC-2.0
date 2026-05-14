@@ -1,3 +1,58 @@
+// Ждем полной загрузки DOM
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Получаем элементы
+    const burgerBtn = document.getElementById('burgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const closeSidebar = document.getElementById('closeSidebar');
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+    
+    // Функция открытия боковой панели
+    function openSidebar() {
+        if (sidebar && overlay) {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Блокируем скролл body
+        }
+    }
+    
+    // Функция закрытия боковой панели
+    function closeSidebarFunc() {
+        if (sidebar && overlay) {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = ''; // Возвращаем скролл
+        }
+    }
+    
+    // Обработчики событий
+    if (burgerBtn) {
+        burgerBtn.addEventListener('click', openSidebar);
+    }
+    
+    if (closeSidebar) {
+        closeSidebar.addEventListener('click', closeSidebarFunc);
+    }
+    
+    if (overlay) {
+        overlay.addEventListener('click', closeSidebarFunc);
+    }
+    
+    // Закрываем панель при клике на ссылку в меню
+    if (sidebarLinks.length > 0) {
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', closeSidebarFunc);
+        });
+    }
+    
+    // Закрываем панель при нажатии клавиши Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && sidebar && sidebar.classList.contains('active')) {
+            closeSidebarFunc();
+        }
+    });
+});
 // Плавная анимация появления элементов при скролле
 document.addEventListener('DOMContentLoaded', function() {
     

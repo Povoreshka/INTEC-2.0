@@ -1,26 +1,29 @@
-
 *,
 *::before,
-*::after{
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat'; 
+    font-family: 'Montserrat';
 }
+
 html {
     scroll-behavior: smooth;
 }
-            
+
 * {
     scroll-margin-top: 30px;
 }
-.section{
+
+.section {
     width: 100%;
 }
-.container{
+
+.container {
+    width: 100%;
     max-width: 1920px;
     margin: 0 auto;
-    /* border: solid; */
+    padding: 0 20px;
 }
 
 body {
@@ -31,203 +34,353 @@ body {
     overflow-x: hidden;
 }
 
-.head{
+.head {
     background-image: url('img/5.jpg');
-    
-    width: 1920px;
+    width: 100%;
+    max-width: 100%;
+    background-size: cover;
+    background-position: center;
     height: 690px;
 }
-.header-phone{
+
+.header-phone {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 65px;
 }
-.header{
+
+.logo {
+    flex-shrink: 0;
+}
+
+.header {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items: center;
     gap: 67px;
 }
-.menu{
+
+.menu {
     display: flex;
     flex-direction: row;
-    /* height: 117px; */
     text-align: center;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items: center;
     gap: 45px;
     font-size: 14px;
     font-weight: bold;
     color: #2d2d2d;
 }
-.head-a{
-        color: #2d2d2d;
 
+.head-a {
+    color: #2d2d2d;
+    text-decoration: none;
+    white-space: nowrap;
 }
-.phone{
+
+.phone {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    flex-shrink: 0;
 }
-.number{
+
+.number {
     font-size: 16px;
     font-weight: bold;
     color: #2d2d2d;
 }
-.call{
+
+.call {
     font-weight: 400;
-font-size: 12px;
-color: #2d2d2d
-    
+    font-size: 12px;
+    color: #2d2d2d;
+    text-decoration: none;
 }
-.header-info{
+
+/* Кнопка бургер - всегда справа */
+.burger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    margin-left: auto;
+}
+
+.burger-btn span {
+    width: 100%;
+    height: 3px;
+    background-color: #2d2d2d;
+    border-radius: 2px;
+    transition: 0.2s;
+}
+
+.header-info {
     display: flex;
     flex-direction: column;
-    padding-left: 360px;
+    padding-left: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
     padding-top: 192px;
 }
-.head-h1{
+
+.head-h1 {
     color: #3E3E3D;
     font-size: 32px;
-        width: 500px;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Боковая панель */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 280px;
+    height: 100%;
+    background-color: #2d2d2d;
+    z-index: 1000;
+    transition: right 0.3s ease;
+    padding: 80px 20px 30px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar.active {
+    right: 0;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.menu-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu-mobile a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.menu-mobile a:hover {
+    color: #DC911B;
+}
+
+.phone-mobile {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #555;
+}
+
+.phone-mobile .number {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.phone-mobile .call {
+    color: #DC911B;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* section 2 */
-
-.services{
+.services {
     height: 1975px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* width: 1200px; */
 }
- .serv{
+
+.serv {
     padding-top: 100px;
     text-align: center;
- }
- .serv-h2{
+}
+
+.serv-h2 {
     text-transform: uppercase;
     font-size: 36px;
- }
- .serv-info{
+}
+
+.serv-info {
     display: flex;
     flex-direction: column;
     padding-top: 60px;
     gap: 100px;
- }
- .serv-1{
+}
+
+.serv-1 {
     display: flex;
     flex-direction: row;
     gap: 140px;
-    width: 1150px;
+    width: 100%;
+    max-width: 1150px;
     padding-right: 110px;
- }
- .text{
+}
+
+.text {
     display: flex;
     flex-direction: column;
     justify-content: center;
- }
- .butt{
+}
+
+.butt {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
- }
- .serv-h4{
+}
+
+.serv-h4 {
     font-size: 24px;
     padding-bottom: 35px;
     text-transform: uppercase;
- }
- .serv-p{
+}
+
+.serv-p {
     font-size: 16px;
     padding-bottom: 35px;
- }
- .serv-butt{
+}
+
+.serv-butt {
     background-color: #FFFFFF;
     border: 1px solid #DC911B;
     padding: 11px 26px;
     border-radius: 10px;
     font-size: 14px;
- }
- .serv-2{
+    cursor: pointer;
+}
+
+.serv-2 {
     display: flex;
-    flex-direction: row-reverse;;
+    flex-direction: row-reverse;
     gap: 140px;
-    width: 1150px;
+    width: 100%;
+    max-width: 1150px;
     padding-left: 110px;
- }
- .serv-3{
+}
+
+.serv-3 {
     display: flex;
     flex-direction: row;
     gap: 140px;
-    width: 1150px;
+    width: 100%;
+    max-width: 1150px;
     padding-right: 110px;
- }
- .serv-4{
-    display: flex;
-    flex-direction: row-reverse;;
-    gap: 140px;
-    width: 1150px;
-    padding-left: 110px;;
- }
- /* section 3 */
+}
 
- .rev-all{
+.serv-4 {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 140px;
+    width: 100%;
+    max-width: 1150px;
+    padding-left: 110px;
+}
+
+/* section 3 */
+.rev-all {
     background-color: #3E3E3D;
     height: 760px;
     display: flex;
     flex-direction: row;
-   
-    justify-content: space-around;
-    align-items: center;
- }
- .rev-img{
-    /* width: 1200px; */
-    display: flex;
-    flex-direction: row;
-   
     justify-content: space-around;
     align-items: center;
 }
- .reviews{
+
+.rev-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.reviews {
     display: flex;
     flex-direction: column;
     padding-top: 125px;
     align-items: center;
     justify-content: center;
-    /* width: 820px; */
- }
- .rev{
+}
+
+.rev {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     gap: 50px;
     padding-top: 105px;
- } 
- .rev-h2{
+}
+
+.rev-h2 {
     color: #FFFFFF;
     font-size: 36px;
     font-weight: bold;
     text-transform: uppercase;
- }
- .butt-1{
+}
+
+.butt-1 {
     height: 35px;
     width: 35px;
     background-color: #C4C4C4;
     border: none;
- }
- .butt-2{
+    cursor: pointer;
+}
+
+.butt-2 {
     height: 35px;
     width: 35px;
     background-color: #DC911B;
     border: none;
- } 
-.rev-butt{
+    cursor: pointer;
+}
+
+.rev-butt {
     padding-top: 40px;
 }
-.rev-a{
+
+.rev-a {
     display: flex;
     text-align: left;
     flex-direction: row;
@@ -237,53 +390,59 @@ color: #2d2d2d
     color: #FFFFFF;
     font-size: 18px;
     font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
 }
- /* section 4 */
- .projects{
+
+/* section 4 */
+.projects {
     height: 1150px;
     display: flex;
     flex-direction: column;
     align-items: center;
-        justify-content: space-around;
+    justify-content: space-around;
+}
 
-
- }
- .project-h2{
-    
+.project-h2 {
     font-weight: 700;
     font-size: 36px;
     text-transform: uppercase;
     color: #000;
- }
- .proj1{
+}
+
+.proj1 {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 60px;
- }
- .proj-p{
+}
+
+.proj-p {
     width: 230px;
     font-weight: 400;
     font-size: 16px;
     color: #000;
- }
- .proj-h2{
+}
+
+.proj-h2 {
     font-weight: 700;
     font-size: 36px;
     text-transform: uppercase;
     color: #000;
     position: relative;
     left: 270px;
- }
- .proj2{
+}
+
+.proj2 {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding-left: 270px;
+    padding-left: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
- }
- .proj-a{
+.proj-a {
     display: flex;
     text-align: left;
     flex-direction: row;
@@ -292,175 +451,216 @@ color: #2d2d2d
     font-size: 18px;
     font-weight: bold;
     width: 1200px;
- }
- /* section 5 */
- .news{
+    cursor: pointer;
+}
+.proj1 img,
+.proj2 img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    flex-shrink: 0;
+}
+/* section 5 */
+.news {
     height: 600px;
     padding-top: 50px;
     display: flex;
     flex-direction: row;
     gap: 50px;
- }
- .right-div{
+}
+
+.right-div {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 55px;
+}
 
- }
- .column{
+.column {
     display: flex;
     flex-direction: column;
     gap: 16px;
- }
- .new-h3{
+}
+
+.new-h3 {
     font-weight: 700;
     font-size: 18px;
     text-transform: uppercase;
     color: #000;
- }
- .new-date{
+}
+
+.new-date {
     font-weight: 300;
     font-size: 14px;
     color: #6f6f6e;
- }
- .new-p{
+}
+
+.new-p {
     font-weight: 400;
     font-size: 16px;
     color: #000;
- }
- .line{
-    width: 0.5px;
-  height: 250px;
-    border-left: 2px solid #b1b1b0;
- }
- /* section 6 */
-
-.quest{
-    height: 1030px;
-
 }
-.que-img{
+
+.line {
+    width: 0.5px;
+    height: 250px;
+    border-left: 2px solid #b1b1b0;
+}
+
+.left-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.left-div img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    flex-shrink: 0;
+}
+
+/* section 6 */
+.quest {
+    height: 1030px;
+}
+
+.que-img {
     height: 700px;
     padding-top: 300px;
     background-image: url('img/10.png');
     background-repeat: no-repeat;
     background-position: center center;
 }
-.que-div{
+
+.que-div {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
 }
-.que-line{
-    width: 0.5px;
+
+.que-line {
     width: 142px;
     border-top: 1px solid #DC911B;
 }
-.que-line2{
-    width: 0.5px;
+
+.que-line2 {
     width: 142px;
     border-top: 1px solid #3E3E3D;
 }
-.que-h3{
+
+.que-h3 {
     font-weight: 700;
     font-size: 24px;
     text-transform: uppercase;
     color: #000;
 }
-.que-p{
+
+.que-p {
     font-weight: 400;
     font-size: 14px;
     color: #000;
 }
-.q-div{
+
+.q-div {
     display: flex;
     flex-direction: row;
     gap: 55px;
 }
-.q-butt{
-   background-color: #ffffff00;
+
+.q-butt {
+    background-color: #ffffff00;
     border: 1px solid #DC911B;
     padding: 11px 26px;
     border-radius: 10px;
-    font-size: 14px; 
+    font-size: 14px;
+    cursor: pointer;
 }
-.p-q{
+
+.p-q {
     font-weight: 400;
     font-size: 12px;
     color: #3e3e3d;
 }
-.stat{
+
+.stat {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 90px;
-
 }
-.stat-row{
+
+.stat-row {
     display: flex;
     flex-direction: row;
     gap: 53px;
 }
-.stat-p{
+
+.stat-p {
     display: flex;
     flex-direction: column;
     gap: 16px;
     width: 245px;
 }
-.stat-h4{
+
+.stat-h4 {
     font-weight: 700;
-font-size: 16px;
-color: #000;
+    font-size: 16px;
+    color: #000;
 }
-.stat-text{
+
+.stat-text {
     font-weight: 500;
     font-size: 12px;
     color: #000;
 }
 
- /* section 7 */
-.clients{
+/* section 7 */
+.clients {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 60px;
-
 }
- .block{
-    
+
+.block {
     display: grid;
     place-items: center;
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, auto);
     padding-bottom: 95px;
- }
- .cl-img{
+}
+
+.cl-img {
     margin-top: 60px;
     margin-bottom: 60px;
     margin-left: 40px;
     margin-right: 40px;
- }
- img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
-/* section 7 */
-.footer1{
- height: 385px;
- background-color: #3E3E3D;
- padding-top: 30px;
- 
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
-.foot-top{
+
+/* footer */
+.footer1 {
+    height: 385px;
+    background-color: #3E3E3D;
+    padding-top: 30px;
+}
+
+.foot-top {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
 
-}
-.foot1{
+.foot1 {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -468,7 +668,8 @@ color: #000;
     font-size: 14px;
     color: #777e89;
 }
-.foot2{
+
+.foot2 {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -476,7 +677,8 @@ color: #000;
     font-size: 14px;
     color: #777e89;
 }
-.foot3{
+
+.foot3 {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -484,48 +686,53 @@ color: #000;
     font-size: 14px;
     color: #777e89;
 }
-.foot-h5{
-   font-weight: 700;
+
+.foot-h5 {
+    font-weight: 700;
     font-size: 15px;
-    color: #fff; 
+    color: #fff;
 }
-.foot-search{
+
+.foot-search {
     width: 420px;
     height: 43px;
     border-radius: 5px;
     border: 1px solid #FFFFFF;
 }
-.search-p{
+
+.search-p {
     font-weight: 400;
     font-size: 13px;
     color: #dadada;
     margin: 12px 0 12px 12px;
 }
-.foot-svg{
+
+.foot-svg {
     display: flex;
     flex-direction: row;
     gap: 10px;
 }
-.foot-info{
+
+.foot-info {
     display: flex;
     flex-direction: row;
     gap: 100px;
     padding-top: 30px;
 }
-.foot-1
-{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    
-}
-.foot-2
-{
+
+.foot-1 {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
-.foot-butt{
+
+.foot-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.foot-butt {
     width: 175px;
     height: 41px;
     background-color: #FD9913;
@@ -534,25 +741,29 @@ color: #000;
     font-size: 14px;
     border-radius: 5px;
     border: 1px solid #FD9913;
+    cursor: pointer;
 }
-.foot-cont{
+
+.foot-cont {
     display: flex;
     justify-content: center;
     padding-top: 55px;
 }
-.foot-line{
+
+.foot-line {
     width: 1200px;
-    
     border-top: 2px solid #777E89;
     text-align: center;
-    
 }
-.foot-p{
+
+.foot-p {
     font-weight: 400;
     font-size: 14px;
-    color: #fff;  
+    color: #fff;
+    text-decoration: none;
 }
-.foot-bot{
+
+.foot-bot {
     padding-top: 58px;
     display: flex;
     flex-direction: row;
@@ -562,40 +773,14 @@ color: #000;
     color: #777e89;
 }
 
-/* Планшеты и большие телефоны (768px - 1200px) */
 @media screen and (max-width: 1200px) {
-    
-    .services,
-    .projects,
-    .rev-all,
-    .quest,
-    .footer1 {
+    .services, .projects, .rev-all, .quest, .footer1 {
         height: auto !important;
     }
 
     .head {
-        width: 100%;
-        background-size: cover;
-        background-position: center;
         height: auto !important;
         min-height: 500px;
-    }
-
-    .container {
-        max-width: 960px;
-        padding: 0 20px;
-    }
-
-    .header {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        padding: 20px 0;
-    }
-
-    .menu {
-        flex-wrap: wrap;
-        gap: 25px;
     }
 
     .header-info {
@@ -606,10 +791,8 @@ color: #000;
 
     .head-h1 {
         font-size: 28px;
-        width: 500px;
     }
 
-    /* Услуги */
     .serv-1, .serv-2, .serv-3, .serv-4 {
         width: 90%;
         padding: 0 !important;
@@ -617,11 +800,6 @@ color: #000;
         flex-direction: column !important;
         align-items: center;
         text-align: center;
-    }
-
-    .serv-1 img, .serv-2 img, .serv-3 img, .serv-4 img {
-        max-width: 100%;
-        height: auto;
     }
 
     .text {
@@ -637,11 +815,6 @@ color: #000;
         padding-bottom: 60px;
     }
 
-    .serv-h2 {
-        font-size: 32px;
-    }
-
-    /* Отзывы */
     .rev-all {
         flex-direction: column;
         padding: 60px 20px;
@@ -652,11 +825,6 @@ color: #000;
         flex-wrap: wrap;
         justify-content: center;
         gap: 30px;
-    }
-
-    .rev-img img {
-        max-width: 100%;
-        height: auto;
     }
 
     .reviews {
@@ -677,7 +845,6 @@ color: #000;
         text-align: center;
     }
 
-    /* Проекты */
     .projects {
         padding: 60px 20px;
         gap: 50px;
@@ -686,14 +853,12 @@ color: #000;
     .proj1, .proj2 {
         flex-direction: column !important;
         align-items: center;
-        padding-left: 0 !important;
         gap: 30px;
         text-align: center;
     }
 
     .proj-h2 {
         position: static;
-        left: 0;
         text-align: center;
     }
 
@@ -703,12 +868,6 @@ color: #000;
         text-align: center;
     }
 
-    .proj1 img, .proj2 img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    /* Новости */
     .news {
         height: auto !important;
         flex-direction: column;
@@ -727,12 +886,6 @@ color: #000;
         display: none;
     }
 
-    .column {
-        text-align: center;
-        align-items: center;
-    }
-
-    /* Вопросы */
     .quest {
         padding-bottom: 60px;
     }
@@ -742,7 +895,6 @@ color: #000;
         padding-top: 80px;
         padding-bottom: 80px;
         background-size: cover;
-        background-position: center;
     }
 
     .q-div {
@@ -757,14 +909,6 @@ color: #000;
         gap: 40px;
     }
 
-    .stat-p {
-        text-align: center;
-        align-items: center;
-        width: 100%;
-        max-width: 245px;
-    }
-
-    /* Клиенты */
     .clients {
         padding: 60px 20px;
     }
@@ -774,11 +918,6 @@ color: #000;
         gap: 30px;
     }
 
-    .cl-img {
-        margin: 15px;
-    }
-
-    /* Футер */
     .footer1 {
         padding-bottom: 40px;
     }
@@ -787,7 +926,6 @@ color: #000;
         flex-wrap: wrap;
         gap: 40px;
         justify-content: center;
-        padding: 0 20px;
     }
 
     .foot-search {
@@ -808,379 +946,142 @@ color: #000;
     .foot-bot {
         flex-wrap: wrap;
         gap: 20px;
-        text-align: center;
         justify-content: center;
-        padding-top: 40px;
     }
 }
 
-/* Мобильные телефоны (до 767px) */
+/* Мобильные устройства */
 @media screen and (max-width: 767px) {
-    .services,
-    .projects,
-    .rev-all,
-    .quest,
-    .footer1 {
-        height: auto !important;
+    /* Показываем бургер */
+    .burger-btn {
+        display: flex;
     }
-
+    
+    /* Скрываем обычное меню И телефон */
+    .header .menu {
+        display: none;
+    }
+    
+    .header .phone {
+        display: none;
+    }
+    
+    /* Перестраиваем шапку */
+    .header {
+        justify-content: flex-end;
+        width: auto;
+        gap: 20px;
+    }
+    
+    .header-phone {
+        justify-content: space-between;
+        padding: 15px 20px;
+    }
+    
+    .head-h1 {
+        font-size: 22px;
+    }
+    
+    /* Скрываем кнопки навигации и картинку */
+    .butt-1, .butt-2 {
+        display: none !important;
+    }
+    
+    .revimg {
+        display: none !important;
+    }
+    
     .head {
         min-height: 400px;
     }
-
-    .container {
-        padding: 0 15px;
-    }
-
-    .header {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .header-phone {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .phone {
-        align-items: center;
-    }
-
-    .menu {
-        flex-direction: column;
-        gap: 12px;
-    }
-
+    
     .header-info {
         padding-left: 15px;
         padding-right: 15px;
         padding-top: 50px;
         text-align: center;
     }
-
+    
     .head-h1 {
-        font-size: 22px;
-        width: 500px;
+        width: 100%;
     }
-
+    
     .serv-h2 {
         font-size: 26px;
     }
-
+    
     .serv-h4 {
         font-size: 20px;
         padding-bottom: 20px;
     }
-
+    
     .serv-p {
         font-size: 14px;
         padding-bottom: 25px;
     }
-
-    .serv-butt {
-        padding: 8px 20px;
-        font-size: 13px;
-    }
-
+    
     .rev-h2 {
         font-size: 26px;
         text-align: center;
     }
-
-    .butt-1, .butt-2 {
-        height: 30px;
-        width: 30px;
-    }
-
+    
     .project-h2 {
         font-size: 26px;
     }
-
+    
     .proj-p {
-        width: 100%;
         max-width: 250px;
     }
-
-    .proj-a {
-        font-size: 14px;
-    }
-
-    .new-h3 {
-        font-size: 16px;
-    }
-
-    .new-p {
-        font-size: 14px;
-    }
-
+    
     .que-h3 {
         font-size: 20px;
         text-align: center;
     }
-
-    .q-butt {
-        padding: 8px 20px;
-        font-size: 13px;
+    
+    .q-div {
+        flex-direction: column;
+        align-items: center;
     }
-
-    .stat-h4 {
-        font-size: 14px;
-    }
-
+    
     .block {
         grid-template-columns: 1fr;
-        gap: 25px;
     }
-
-    .cl-img img {
-        max-width: 80%;
-    }
-
-    .foot-h5 {
-        font-size: 14px;
-    }
-
-    .foot1, .foot2, .foot3 {
-        font-size: 12px;
+    
+    .foot-info {
+        flex-direction: column;
+        align-items: center;
         text-align: center;
     }
-
+    
     .foot-svg {
         justify-content: center;
     }
-
-    .foot-info {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-    }
-
-    .foot-1, .foot-2 {
-        align-items: center;
-        text-align: center;
-    }
-
-    .foot-butt {
-        width: 160px;
-        height: 40px;
-        font-size: 13px;
-    }
-
-    .foot-p {
-        font-size: 12px;
-    }
-
-    .foot-bot {
-        font-size: 11px;
-        flex-direction: column;
-        gap: 15px;
-    }
 }
 
-/* Очень маленькие телефоны (до 480px) */
 @media screen and (max-width: 480px) {
     .head-h1 {
         font-size: 18px;
-        width: 300px;
-
     }
-
+    
     .serv-h2, .rev-h2, .project-h2 {
         font-size: 22px;
     }
-
-    .serv-h4 {
-        font-size: 18px;
-    }
-
+    
     .que-h3 {
         font-size: 18px;
     }
-
-    .q-div {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .stat-row {
-        gap: 25px;
-    }
-
-    .stat-p {
-        width: 100%;
-    }
-
+    
     .foot-search {
         max-width: 100%;
-    }
-
-    .foot-line {
-        width: 100%;
     }
 }
-/* Очень маленькие телефоны (до 360px) */
+
 @media screen and (max-width: 360px) {
-    .head {
-        min-height: 350px;
-    }
-
-    .container {
-        padding: 0 10px;
-    }
-
-    .header {
-        gap: 10px;
-    }
-
-    .header-info {
-        padding-top: 30px;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
     .head-h1 {
         font-size: 16px;
-        line-height: 1.3;
-        width: 300px;
-
     }
-
-    .serv-h2,
-    .rev-h2,
-    .project-h2 {
-        font-size: 20px;
-    }
-
-    .serv-h4 {
-        font-size: 16px;
-        padding-bottom: 12px;
-    }
-
-    .serv-p {
-        font-size: 12px;
-        padding-bottom: 18px;
-    }
-
-    .serv-butt {
-        padding: 6px 16px;
-        font-size: 12px;
-    }
-
-    .rev-h2 {
-        text-align: center;
-    }
-
-    .butt-1, .butt-2 {
-        height: 25px;
-        width: 25px;
-    }
-
-    .proj-p {
-        max-width: 200px;
-        font-size: 12px;
-    }
-
-    .proj-a {
-        font-size: 12px;
-    }
-
-    .new-h3 {
-        font-size: 14px;
-    }
-
-    .new-p {
-        font-size: 12px;
-    }
-
-    .que-h3 {
-        font-size: 16px;
-    }
-
-    .q-butt {
-        padding: 6px 16px;
-        font-size: 12px;
-    }
-
-    .q-div {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .stat-row {
-        flex-direction: column;
-        gap: 15px;
-        align-items: center;
-    }
-
-    .stat-h4 {
-        font-size: 12px;
-    }
-
-    .stat-p {
-        width: 90%;
-        font-size: 12px;
-        text-align: center;
-    }
-
-    .block {
-        gap: 20px;
-    }
-
-    .cl-img img {
-        max-width: 70%;
-    }
-
-    .foot-h5 {
-        font-size: 12px;
-    }
-
-    .foot1, .foot2, .foot3 {
-        font-size: 10px;
-    }
-
-    .foot-info {
-        gap: 20px;
-    }
-
-    .foot-butt {
-        width: 140px;
-        height: 36px;
-        font-size: 11px;
-    }
-
-    .foot-p {
-        font-size: 10px;
-    }
-
-    .foot-search {
-        max-width: 100%;
-        width: 100%;
-    }
-
-    .foot-line {
-        width: 100%;
-        font-size: 10px;
-    }
-
-    .foot-bot {
-        font-size: 9px;
-        gap: 10px;
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .menu {
-        gap: 8px;
-    }
-
-    .phone {
-        font-size: 12px;
-    }
-
-    /* Если используется кнопка бургер-меню — уменьшаем */
-    .burger {
-        width: 28px;
-        height: 28px;
+    
+    .sidebar {
+        width: 260px;
     }
 }
