@@ -165,27 +165,78 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Эффект печати для заголовка
     const headTitle = document.querySelector('.head-h1');
-    if(headTitle && !headTitle.hasAttribute('data-animated')) {
-        const originalText = headTitle.innerText;
-        headTitle.setAttribute('data-animated', 'true');
-        headTitle.style.opacity = '0';
+if(headTitle && !headTitle.hasAttribute('data-animated')) {
+    const originalHTML = headTitle.innerHTML;
+    headTitle.setAttribute('data-animated', 'true');
+    headTitle.style.opacity = '0';
+    
+    setTimeout(() => {
+        const parts = [];
+        let currentText = '';
         
-        setTimeout(() => {
-            let i = 0;
-            headTitle.innerHTML = '';
-            headTitle.style.opacity = '1';
-            
-            function typeWriter() {
-                if(i < originalText.length) {
-                    headTitle.innerHTML += originalText.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 40);
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = originalHTML;
+        
+        function processNode(node) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                currentText += node.textContent;
+            } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'BR') {
+                if (currentText) {
+                    parts.push({ type: 'text', content: currentText });
+                    currentText = '';
                 }
+                parts.push({ type: 'br' });
+            }
+        }
+        
+        tempDiv.childNodes.forEach(node => {
+            processNode(node);
+        });
+        
+        if (currentText) {
+            parts.push({ type: 'text', content: currentText });
+        }
+        
+        headTitle.innerHTML = '';
+        headTitle.style.opacity = '1';
+        
+        let partIndex = 0;
+        let charIndex = 0;
+        let currentPart = parts[partIndex];
+        
+        function typeWriter() {
+            if (partIndex >= parts.length) return;
+            
+            if (currentPart.type === 'br') {
+                headTitle.appendChild(document.createElement('br'));
+                partIndex++;
+                if (partIndex < parts.length) {
+                    currentPart = parts[partIndex];
+                    charIndex = 0;
+                    setTimeout(typeWriter, 100);
+                }
+                return;
             }
             
+            if (charIndex < currentPart.content.length) {
+                headTitle.innerHTML += currentPart.content.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 40);
+            } else {
+                partIndex++;
+                if (partIndex < parts.length) {
+                    currentPart = parts[partIndex];
+                    charIndex = 0;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+        }
+        
+        if (parts.length > 0) {
             typeWriter();
-        }, 500);
-    }
+        }
+    }, 500);
+}
     
     // Модальное окно для заказа звонка
     const callButtons = document.querySelectorAll('.call, .foot-butt');
